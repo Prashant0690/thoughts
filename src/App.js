@@ -1,31 +1,32 @@
 import React from 'react';
-import { CopyBlock, monoBlue } from "react-code-blocks";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  useRouteMatch,
+  useParams
+} from "react-router-dom";
+import TddNotebook from './components/TddNotebook';
 import './App.css';
 
 
 function App() {
   return (
-    <div>
-      <div style={{fontFamily: 'Fira Code', textAlign: 'left'}}>
-            <h1>Blog</h1>
-            <CopyBlock
-                text={code2}
-                language={'java'}
-                showLineNumbers={false}
-                theme = {monoBlue}
-                wrapline
-            />
-        </div>
-      
-    </div>
+      <Router>
+      <div>
+        <Switch>
+          <Route path="/tdd-notebook">
+            <TddNotebook />
+          </Route>
+          <Route path="/">
+            <TddNotebook />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
+     
   );
 }
-
-let code2 = `
-
-Hello World!!!!!!!!!!
-Hello World!!!!!!!!!!
-
-`;
 
 export default App;
